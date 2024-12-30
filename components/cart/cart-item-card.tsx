@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { CartItem } from '@/types/menu';
-import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Minus, Plus, Trash2 } from 'lucide-react';
-import { useCart } from '@/hooks/use-cart';
+import { CartItem } from "@/types/menu";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Minus, Plus, Trash2 } from "lucide-react";
+import { useCart } from "@/hooks/use-cart";
 
 interface CartItemCardProps {
   item: CartItem;
@@ -21,18 +21,19 @@ export function CartItemCard({ item }: CartItemCardProps) {
             <h4 className="font-medium">{item.menuItem.name}</h4>
             {item.customizations.length > 0 && (
               <p className="text-sm text-muted-foreground">
-                {item.customizations.map((c) => c.name).join(', ')}
+                {item.customizations.map((c) => c.name).join(", ")}
               </p>
             )}
             <div className="flex items-center space-x-2 mt-2">
               <Button
                 variant="outline"
                 size="icon"
-                onClick={() => updateQuantity(
-                  item.menuItem.id, 
-                  Math.max(0, item.quantity - 1),
-                  item.customizationKey
-                )}
+                onClick={() =>
+                  updateQuantity(
+                    item.menuItem.id,
+                    Math.max(0, item.quantity - 1)
+                  )
+                }
               >
                 <Minus className="h-4 w-4" />
               </Button>
@@ -40,11 +41,9 @@ export function CartItemCard({ item }: CartItemCardProps) {
               <Button
                 variant="outline"
                 size="icon"
-                onClick={() => updateQuantity(
-                  item.menuItem.id, 
-                  item.quantity + 1,
-                  item.customizationKey
-                )}
+                onClick={() =>
+                  updateQuantity(item.menuItem.id, item.quantity + 1)
+                }
               >
                 <Plus className="h-4 w-4" />
               </Button>
@@ -56,7 +55,7 @@ export function CartItemCard({ item }: CartItemCardProps) {
               variant="ghost"
               size="icon"
               className="mt-2"
-              onClick={() => removeItem(item.menuItem.id, item.customizationKey)}
+              onClick={() => removeItem(item.menuItem.id)}
             >
               <Trash2 className="h-4 w-4" />
             </Button>

@@ -1,29 +1,31 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import Image from 'next/image';
-import { Button } from '@/components/ui/button';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 const slides = [
   {
-    image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950',
-    title: 'Authentic Indian Street Food',
-    subtitle: 'Experience the true taste of India',
+    image: "https://images.unsplash.com/photo-1601050690597-df0568f70950",
+    title: "Authentic Indian Street Food",
+    subtitle: "Experience the true taste of India",
   },
   {
-    image: 'https://images.unsplash.com/photo-1606491956689-2ea866880c84',
-    title: 'Fresh & Delicious Chaats',
-    subtitle: 'Made with love and tradition',
+    image: "https://images.unsplash.com/photo-1606491956689-2ea866880c84",
+    title: "Fresh & Delicious Chaats",
+    subtitle: "Made with love and tradition",
   },
   {
-    image: 'https://images.unsplash.com/photo-1589302168068-964664d93dc0',
-    title: 'Crispy Samosas',
-    subtitle: 'Perfectly spiced, perfectly crispy',
+    image: "https://images.unsplash.com/photo-1589302168068-964664d93dc0",
+    title: "Crispy Samosas",
+    subtitle: "Perfectly spiced, perfectly crispy",
   },
 ];
 
 export function HeroSection() {
+  const router = useRouter();
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
@@ -43,7 +45,7 @@ export function HeroSection() {
         <div
           key={index}
           className={`absolute inset-0 transition-opacity duration-1000 ${
-            index === currentSlide ? 'opacity-100' : 'opacity-0'
+            index === currentSlide ? "opacity-100" : "opacity-0"
           }`}
         >
           <Image
@@ -57,7 +59,11 @@ export function HeroSection() {
             <div className="text-center text-white space-y-4 p-4">
               <h1 className="text-4xl md:text-6xl font-bold">{slide.title}</h1>
               <p className="text-xl md:text-2xl">{slide.subtitle}</p>
-              <Button size="lg" className="mt-4">
+              <Button
+                size="lg"
+                className="mt-4"
+                onClick={() => router.push("/order")}
+              >
                 Order Now
               </Button>
             </div>

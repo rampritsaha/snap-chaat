@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { MenuItem } from '@/types/menu';
-import { Button } from '@/components/ui/button';
-import { useCart } from '@/hooks/use-cart';
-import { Checkbox } from '@/components/ui/checkbox';
+import { MenuItem } from "@/types/menu";
+import { Button } from "@/components/ui/button";
+import { useCart } from "@/hooks/use-cart";
+import { Checkbox } from "@/components/ui/checkbox";
 
 interface QuickAddonsProps {
   item: MenuItem;
@@ -21,7 +21,7 @@ export function QuickAddons({
   if (!item.customizations?.length) return null;
 
   return (
-    <div className="mt-4 space-y-2 flex">
+    <div className="mt-4 flex items-center gap-x-4">
       {item.customizations.map((customization) => {
         const isSelected = selectedCustomizations.some(
           (c) => c.id === customization.id
